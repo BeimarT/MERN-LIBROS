@@ -1,0 +1,21 @@
+{
+  "name": "administrarlibros-backend",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "práctica de mern",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "author": "BeimarTorrez",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "mongoose": "^6.4.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.18"
+  }
+}
