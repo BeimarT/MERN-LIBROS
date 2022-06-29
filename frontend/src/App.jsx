@@ -1,8 +1,22 @@
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import AuthLayout from './layout/AuthLayout'
+import ConfirmarCuenta from './pages/ConfirmarCuenta'
+import Login from './pages/Login'
+import PasswordOlvidada from './pages/PasswordOlvidada'
+import Registrar from './pages/Registrar'
 
-function App() {
-
+function App () {
   return (
-    <h1>Inicio</h1>
+    <BrowserRouter>
+      <Routes>
+        <Route path='/' element={<AuthLayout />}>
+          <Route index element={<Login />} />
+          <Route path='registrar' element={<Registrar />} />
+          <Route path='password-olvidada' element={<PasswordOlvidada />} />
+          <Route path='confirmar/:id' element={<ConfirmarCuenta />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   )
 }
 
