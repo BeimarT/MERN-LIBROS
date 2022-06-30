@@ -1,9 +1,10 @@
+import emailVerificar from '../helpers/emailVerificar.js'
 import generarId from '../helpers/generarID.js'
 import generarJWT from '../helpers/generarJWT.js'
 import Usuario from '../models/Usuario.js'
 
 const registro = async (req, res) => {
-  const { email } = req.body
+  const { email, nombre } = req.body
 
   // Prevenir usuario duplicado
 
@@ -17,6 +18,13 @@ const registro = async (req, res) => {
     // Crear nuevo usuario
     const usuario = new Usuario(req.body)
     const usuarioCreado = await usuario.save()
+
+    // Enviar el email
+    emailVerificar({
+      email,
+      nombre,
+      token: usuarioCreado.token
+    })
 
     res.json(`Usuario creado correctamente: ${usuarioCreado}`)
   } catch (error) {
