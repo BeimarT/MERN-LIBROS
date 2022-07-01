@@ -1,3 +1,4 @@
+import emailPasswordOlvidada from '../helpers/emailPasswordOlvidada.js'
 import emailVerificar from '../helpers/emailVerificar.js'
 import generarId from '../helpers/generarID.js'
 import generarJWT from '../helpers/generarJWT.js'
@@ -95,6 +96,12 @@ const passwordOlvidada = async (req, res) => {
   try {
     existeEmail.token = generarId()
     await existeEmail.save()
+    // Enviar email para reestablecer contraseña
+    emailPasswordOlvidada({
+      email,
+      nombre: existeEmail.nombre,
+      token: existeEmail.token
+    })
     res.json({ msg: 'Email enviado correctamente' })
   } catch (error) {
     console.log(error)

@@ -19,7 +19,7 @@ const emailVerificar = async (datos) => {
     subject: 'Verifica tu cuenta en Administrador de Libros',
     text: 'Verifica tu cuenta en Administrador de Libros',
     html: `<p>Hola: ${nombre}, verifica tu cuenta en Administrador de Libros.</p>
-        <p>Tu cuenta ya esta lista, solo debes entrar en el siguiente enlace:
+        <p>Tu cuenta esta lista, solo debes entrar en el siguiente enlace:
         <a href="${process.env.FRONTEND_URL}/confirmar/${token}">Verificar Cuenta</a>
         </p>
         <p>Si no has sido el creador de la cuenta, puedes ignorar este mensaje.</p>

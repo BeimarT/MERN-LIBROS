@@ -13,7 +13,8 @@ app.use(express.json())
 dotenv.config()
 connectDB()
 
-const corsPolicy = ['http://localhost:3000']
+const corsPolicy = [process.env.FRONTEND_URL]
+console.log(corsPolicy)
 const corsOptions = {
   origin: function (origin, callback) {
     if (corsPolicy.indexOf(origin) !== -1) {
