@@ -24,6 +24,7 @@
     "vite": "^2.9.9"
   },
   "eslintConfig": {
-    "extends": "./node_modules/standard/eslintrc.json"
+    "extends": "./node_modules/standard/eslintrc.json",
+    "localStorage": true
   }
 }

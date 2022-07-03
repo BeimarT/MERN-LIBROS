@@ -51,8 +51,7 @@ const actualizarLibro = async (req, res) => {
   libro.genero = req.body.genero || libro.genero
   libro.idioma = req.body.idioma || libro.idioma
   libro.paginas = req.body.paginas || libro.paginas
-  libro.fecha_inicio = req.body.fecha_inicio || libro.fecha_inicio
-  libro.fecha_finalizado = req.body.fecha_finalizado || libro.fecha_finalizado
+
   try {
     const libroActualizado = await libro.save()
 

@@ -7,7 +7,6 @@ const PasswordOlvidada = () => {
   const [email, setEmail] = useState('')
   const [alerta, setAlerta] = useState({})
 
-  console.log(email)
   const handleSubmit = async e => {
     e.preventDefault()
 

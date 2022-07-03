@@ -36,7 +36,7 @@ const registro = async (req, res) => {
 const perfil = (req, res) => {
   const { usuario } = req
 
-  res.json({ perfil: usuario })
+  res.json(usuario)
 }
 
 const confirmar = async (req, res) => {
@@ -77,7 +77,12 @@ const login = async (req, res) => {
 
   // Revisar password
   if (await usuario.comprobarPassword(password)) {
-    res.json({ token: generarJWT(usuario.id) })
+    res.json({
+      _id: usuario._id,
+      nombre: usuario.nombre,
+      email: usuario.email,
+      token: generarJWT(usuario.id)
+    })
   } else {
     const error = new Error('Contraseña incorrecta')
     return res.status(403).json({ msg: error.message })

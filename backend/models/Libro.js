@@ -22,14 +22,6 @@ const libroSchema = mongoose.Schema(
       type: Number,
       required: true
     },
-    fecha_inicio: {
-      type: Date,
-      required: true,
-      default: Date.now()
-    },
-    fecha_finalizado: {
-      type: Date
-    },
     usuario: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Usuario'
