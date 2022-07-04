@@ -3,7 +3,6 @@ import Libro from '../models/Libro.js'
 const agregarLibro = async (req, res) => {
   const libro = new Libro(req.body)
   libro.usuario = req.usuario._id
-  console.log(libro)
   try {
     const libroGuardado = await libro.save()
     res.json(libroGuardado)

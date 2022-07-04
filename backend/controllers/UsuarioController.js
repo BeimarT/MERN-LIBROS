@@ -143,6 +143,56 @@ const nuevaPassword = async (req, res) => {
     console.log(error)
   }
 }
+const actualizarPerfil = async (req, res) => {
+  const usuario = await Usuario.findById(req.params.id)
+  if (!usuario) {
+    const error = new Error('Hubo un error')
+
+    return res.status(400).json({ msg: error.message })
+  }
+  const { email } = req.body
+  if (usuario.email !== req.body.email) {
+    const existeEmail = await Usuario.findOne({ email })
+    if (existeEmail) {
+      const error = new Error('El email ya esta en uso')
+      return res.status(400).json({ msg: error.message })
+    }
+  }
+  try {
+    usuario.nombre = req.body.nombre
+    usuario.email = req.body.email
+    usuario.telefono = req.body.telefono
+
+    const usuarioActualizado = await usuario.save()
+    res.json(usuarioActualizado)
+  } catch (error) {
+    console.log(error)
+  }
+}
+const actualizarPassword = async (req, res) => {
+  // Leer datos
+  const { id } = req.usuario
+  const { passwordActual, passwordNuevo } = req.body
+  // Comprobar que el usuario existe
+  const usuario = await Usuario.findById(id)
+  if (!usuario) {
+    const error = new Error('Hubo un error')
+
+    return res.status(400).json({ msg: error.message })
+  }
+  // Comprobar su contraseña actual
+
+  if (await usuario.comprobarPassword(passwordActual)) {
+  // Guardar la nueva contraseña
+    usuario.password = passwordNuevo
+    await usuario.save()
+    res.json({ msg: 'Contraseña modificado correctamente' })
+  } else {
+    const error = new Error('La contraseña actual es incorrecta')
+    return res.status(400).json({ msg: error.message })
+  }
+}
+
 export {
   registro,
   perfil,
@@ -150,5 +200,7 @@ export {
   login,
   passwordOlvidada,
   comprobarToken,
-  nuevaPassword
+  nuevaPassword,
+  actualizarPerfil,
+  actualizarPassword
 }
