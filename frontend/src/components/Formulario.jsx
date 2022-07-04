@@ -39,7 +39,7 @@ const Formulario = () => {
     guardarLibro({ titulo, autor, genero, idioma, paginas, id });
 
     setAlerta({
-      mensaje: "Añadido Correctamente",
+      mensaje: "Guardado Correctamente",
     });
     setTimeout(() => {
       setAlerta({});
