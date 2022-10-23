@@ -46,7 +46,6 @@ const Registrar = () => {
         mensaje: error.response.data.msg,
         error: true,
       });
-      console.log(error.response);
     }
   };
   const { mensaje } = alerta;

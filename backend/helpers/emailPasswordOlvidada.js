@@ -19,7 +19,7 @@ const emailPasswordOlvidada = async (datos) => {
     subject: 'Restablece tu contraseña',
     text: 'Restablece tu contraseña',
     html: `<p>Hola: ${nombre}, has solicitado reestablecer tu contraseña.</p>
-        <p>Entra en el siguiente enlace para generar uan nueva contraseña:
+        <p>Entra en el siguiente enlace para generar una nueva contraseña:
         <a href="${process.env.FRONTEND_URL}/password-olvidada/${token}">Reestablecer contraseña</a>
         </p>
         <p>Si no has sido el creador de la cuenta, puedes ignorar este mensaje.</p>
